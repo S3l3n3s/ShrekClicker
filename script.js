@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageContainer = document.getElementById('image-container');
     let count = CounterDisplay ? parseInt(CounterDisplay.textContent.split(': ')[1]) : 0;
 
+
+    
+
     // Function to update the counter display
     function updateDisplay() {
         CounterDisplay.textContent = "Counter: " + count;
@@ -19,16 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
         imageContainer.style.visibility = "hidden"; // Hide the image
     }
 
-
-    if (button) {
-        button.addEventListener("click", function () {      
-            count++;
-            updateDisplay();
-            // Example: Navigate to another page
-            // window.location.href = "anotherpage.html";
-        });
-    }
-
     // Function to check the counter and show/hide the image
     function checkCounter() {
         console.log("Current count: " + count); // Debugging line
@@ -38,4 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
             hideImage();
         }
     }
+
+    if (button) {
+        button.addEventListener("click", function () {      
+            count++;
+            checkCounter();
+            updateDisplay();
+            // Example: Navigate to another page
+            // window.location.href = "anotherpage.html";
+        });
+    }
+
+
 });
