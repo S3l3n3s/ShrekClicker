@@ -15,11 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showImage() {
-        imageContainer.style.visibility = "block"; // Show the image
+        imageContainer.style.display = "block"; // Show the image
     }  
 
     function hideImage() {
-        imageContainer.style.visibility = "none"; // Hide the image
+        imageContainer.style.display = "none"; // Hide the image
     }
 
     // Function to check the counter and show/hide the image
