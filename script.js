@@ -15,17 +15,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function showImage() {
-        imageContainer.style.visibility = "visible"; // Show the image
+        imageContainer.style.display = "block"; // Show the image
     }  
 
     function hideImage() {
-        imageContainer.style.visibility = "hidden"; // Hide the image
+        imageContainer.style.display = "none"; // Hide the image
     }
 
     // Function to check the counter and show/hide the image
     function checkCounter() {
         console.log("Current count: " + count); // Debugging line
-        if (count >= 10) {
+        if (count >= 100) {
             showImage();
         } else {
             hideImage();
