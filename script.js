@@ -1,7 +1,7 @@
 
 
 //imports
-//import './myClasses.js';
+//import '/myClasses.js';
   
 // Get DOM elements
 const button = document.getElementById('ShrekButton');
@@ -39,37 +39,37 @@ return fetch('./index.html'); // Fallback to network
 */
 
 
-    function showImage() {
-        imageContainer.style.display = "block"; // Show the image
-    }  
+function showImage() {
+    imageContainer.style.display = "block"; // Show the image
+}  
 
-    function hideImage() {
-        imageContainer.style.display = "none"; // Hide the image
-    }
+function hideImage() {
+    imageContainer.style.display = "none"; // Hide the image
+}
 
-    function hideAutoClickerButton() {
-        autoClickerButton.style.display = "none"; // Hide the auto clicker button
-        autoClickerDisplay.style.display = "none"; // Hide the auto clicker display
-    } 
+function hideAutoClickerButton() {
+    autoClickerButton.style.display = "none"; // Hide the auto clicker button
+    autoClickerDisplay.style.display = "none"; // Hide the auto clicker display
+} 
 
-    function showAutoClickerButton() {
-        autoClickerButton.style.display = "block"; // Show the auto clicker button
-        autoClickerDisplay.style.display = "block"; // Show the auto clicker display
-    }
+function showAutoClickerButton() {
+    autoClickerButton.style.display = "block"; // Show the auto clicker button
+    autoClickerDisplay.style.display = "block"; // Show the auto clicker display
+}
 
-    function disableAutoClickerButton() {
-        autoClickerButton.disabled = true; // Disable the auto clicker button
-    }
+function disableAutoClickerButton() {
+    autoClickerButton.disabled = true; // Disable the auto clicker button
+}
 
-    function enableAutoClickerButton() {
-        autoClickerButton.disabled = false; // Enable the auto clicker button
-    }
+function enableAutoClickerButton() {
+    autoClickerButton.disabled = false; // Enable the auto clicker button
+}
 
-    function updateClickerCost() {
-        autoClickerCost = 100 + (autoClickers * 50);
-    }
+function updateClickerCost() {
+    autoClickerCost = 100 + (autoClickers * 50);
+}
 // Function to update the counter display
-    function updateDisplay() {
+function updateDisplay() {
     CounterDisplay.textContent = count;
     autoClickerDisplay.textContent = "Auto Clickers: " + autoClickers + " (Cost: $" + autoClickerCost + ")";
 
@@ -79,62 +79,58 @@ return fetch('./index.html'); // Fallback to network
     }else {
         disableAutoClickerButton();
     }               
- }
+}
 
     // Function to check the counter and show/hide the image
-    function checkCounter() {
+function checkCounter() {
 
-        if (count >= autoClickerCost) { // Show image and button if count is 100 or more and less than 5 auto clickers
+    if (count >= autoClickerCost) { // Show autoclicker button if count is 100 or more and less than 5 auto clickers
 
-            showAutoClickerButton(); // Show the auto clicker button when the first auto clicker is purchased
-            updateClickerCost(); // Update the cost for the next auto clicker
-
-        } /*else {
-            disableAutoClickerButton(); // Hide the auto clicker button if count is less than 100
-        } */
-
-        updateDisplay(); // Update the display after checking the counter
-    }
-
-    function increaseCounter() {    
-        count++;
-        checkCounter();
-    }
-
-    function addAutoClicker() {
-        autoClickers++;
-        count -= autoClickerCost; // Deduct the cost from the count
+        showAutoClickerButton(); // Show the auto clicker button when the first auto clicker is purchased
         updateClickerCost(); // Update the cost for the next auto clicker
-        //checkCounter();
-        updateDisplay();
-        count += increment;
-        tId = setInterval(function() {increaseCounter();}, speed);
+
+    }
+
+    updateDisplay(); // Update the display after checking the counter
+}
+
+function increaseCounter() {    
+    count++;
+    checkCounter();
+}
+
+function addAutoClicker() {
+    autoClickers++;
+    count -= autoClickerCost; // Deduct the cost from the count
+    updateClickerCost(); // Update the cost for the next auto clicker
+    updateDisplay();
+    //count += increment;
+    tId = setInterval(function() {increaseCounter();}, speed);
         
 }
 
 //shrek me
-    if (button) {
-        button.addEventListener("click", function () {    
-            increaseCounter();
-            updateDisplay();
-        });
-    }
+if (button) {
+    button.addEventListener("click", function () {    
+        increaseCounter();
+        updateDisplay();
+    });
+}
 
 //Auto clicker button
-    if (autoClickerButton) {
-        autoClickerButton.addEventListener("click", function () {
-            addAutoClicker();
+if (autoClickerButton) {
+    autoClickerButton.addEventListener("click", function () {
+        addAutoClicker();
+        updateDisplay();
+    });
+}
+
+window.addEventListener("load", function () {
+    document.querySelectorAll(".start").forEach(function (element) {
+        element.addEventListener("click", function () {
+            checkCounter();
             updateDisplay();
         });
-    }
-
-   window.addEventListener("load", function () {
-        document.querySelectorAll(".start").forEach(function (element) {
-            element.addEventListener("click", function () {
-                checkCounter();
-                updateDisplay();
-            });
-        });
     });
+});
 
-//});
